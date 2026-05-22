@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首富投资方法论</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --accent: #d4a84b;
+  --accent-dim: #b8860b;
+  --green: #3fb950;
+  --red: #f85149;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15px;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+/* Hero */
+.hero {
+  padding: 60px 0 40px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.hero .subtitle {
+  font-size: 1.1em;
+  color: var(--text-dim);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.hero .tagline {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.tag { 
+  padding: 4px 14px; 
+  border-radius: 20px; 
+  font-size: 0.85em;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+/* Nav */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13,17,23,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.88em;
+  transition: all 0.2s;
+}
+nav a:hover {
+  color: var(--accent);
+  background: rgba(212,168,75,0.08);
+}
+
+/* Sections */
+section { padding: 48px 0; }
+section h2 {
+  font-size: 1.6em;
+  color: var(--accent);
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+section h3 {
+  font-size: 1.15em;
+  color: var(--text);
+  margin: 24px 0 12px;
+}
+section h4 {
+  font-size: 1em;
+  color: var(--text-dim);
+  margin: 16px 0 8px;
+  font-weight: 600;
+}
+section p { margin-bottom: 12px; color: var(--text-dim); }
+section ul, section ol { margin: 8px 0 16px 20px; color: var(--text-dim); }
+section li { margin-bottom: 6px; }
+
+/* Cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.card h4 { color: var(--accent); margin-top: 0; }
+.card p { font-size: 0.95em; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 16px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+th {
+  background: var(--surface);
+  color: var(--text-dim);
+  font-weight: 600;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+tr:hover { background: rgba(255,255,255,0.02); }
+
+/* Code blocks */
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 0.88em;
+  line-height: 1.5;
+  margin: 16px 0;
+}
+code {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  color: var(--blue);
+}
+pre code { color: var(--text-dim); }
+
+/* Boxes */
+.box {
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+.box-red { border-left-color: var(--red); }
+.box-green { border-left-color: var(--green); }
+.box-blue { border-left-color: var(--blue); }
+.box-purple { border-left-color: var(--purple); }
+.box h4 { margin: 0 0 8px; }
+
+/* Flow */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.flow-step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+.flow-arrow { color: var(--accent); font-size: 1.2em; }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2em; }
+  nav ul { gap: 4px; }
+  nav a { padding: 4px 10px; font-size: 0.82em; }
+  .card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>首富投资方法论</h1>
+  <p class="subtitle">一个从实战中打磨出来的A股投资操作系统——数据驱动、体系化决策、从买入到持有的全流程管理</p>
+  <div class="tagline">
+    <span class="tag">📊 数据驱动</span>
+    <span class="tag">🎯 CAN SLIM + PEG</span>
+    <span class="tag">🧠 心理纪律</span>
+    <span class="tag">🔄 Thesis Check</span>
+  </div>
+</div>
+
+<nav>
+  <ul>
+    <li><a href="#philosophy">投资哲学</a></li>
+    <li><a href="#framework">选股框架</a></li>
+    <li><a href="#thesis">持有检查</a></li>
+    <li><a href="#emotion">情绪系统</a></li>
+    <li><a href="#pipeline">数据管道</a></li>
+    <li><a href="#portfolio">组合管理</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<section id="philosophy">
+<h2>一、投资哲学</h2>
+
+<div class="box-purple box">
+  <h4>核心理念</h4>
+  <p>寻找<strong>翻N倍</strong>而非稳健收益的机会。AI是十年结构性机会，产业链全扫描找最大弹性。数据驱动，偏好中小盘。不做预测，做<strong>情景推演</strong>。</p>
+</div>
+
+<h3>十个信条</h3>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>① 买在分歧，卖在一致</h4>
+    <p>市场共识形成时,超额收益已消失。真正超额在"大多数人还没看明白"的阶段。</p>
+  </div>
+  <div class="card">
+    <h4>② 仓位=你的观点</h4>
+    <p>仓位比例就是你对自己判断的信心程度。不敢下重注的"看好"没有意义。</p>
+  </div>
+  <div class="card">
+    <h4>③ 先看风险再看收益</h4>
+    <p>任何标的第一反应不是"能涨多少"，而是"下跌空间多大、逻辑破在哪"。</p>
+  </div>
+  <div class="card">
+    <h4>④ 不拍脑袋</h4>
+    <p>所有判断必须有数据支撑。不确定的事明确说"不确定"，不装懂。</p>
+  </div>
+  <div class="card">
+    <h4>⑤ 体系>直觉</h4>
+    <p>用CAN SLIM+PE+PEG的框架约束自己。单独任何一个指标都有盲区，体系互补。</p>
+  </div>
+  <div class="card">
+    <h4>⑥ 买多高决定赚多少</h4>
+    <p>估值是收益率的第一决定因素。好公司也要有好价格——买贵了可能需要5年才能消化。</p>
+  </div>
+  <div class="card">
+    <h4>⑦ 不做左侧硬扛</h4>
+    <p>趋势向下时不做"越跌越买"。等右侧信号明确再入场，宁愿错过底部10%。</p>
+  </div>
+  <div class="card">
+    <h4>⑧ 区分噪音和信号</h4>
+    <p>股价波动是噪音。基本面支柱是否动摇才是信号。持有检查帮你区分两者。</p>
+  </div>
+  <div class="card">
+    <h4>⑨ 情绪操作只能犯一个错</h4>
+    <p>恐慌卖完，别再追高买回来。一个方向错了，反方向操作往往是错两次。</p>
+  </div>
+  <div class="card">
+    <h4>⑩ 时间在你这边</h4>
+    <p>好的基本面+合理的价格=时间站在你这边。短期下跌只是给了好公司更便宜的买入机会。</p>
+  </div>
+</div>
+
+<h3>个人认知边界</h3>
+<ul>
+  <li><strong>劣势清晰：</strong>没有信任背书、没有业绩记录，需要时间积累</li>
+  <li><strong>不做的事情：</strong>不预测短期股价、不给具体买卖建议、不推荐灰色产品</li>
+  <li><strong>能力圈：</strong>A股全市场扫描AI产业链、周期（有色/钴/镍）、光模块、存储、半导体</li>
+  <li><strong>相信什么：</strong>方法论比结果更重要。筛选→检查→情绪控制三闭环跑通，收益是副产品</li>
+</ul>
+</section>
+
+<section id="framework">
+<h2>二、选股框架：CAN SLIM + PEG 四阶段筛选</h2>
+
+<div class="box box">
+  <h4>框架来源</h4>
+  <p>消化William O'Neil的CAN SLIM系统和彼得·林奇的PEG估值法，适配A股市场特征。不自己做评分模型，用成熟框架。</p>
+</div>
+
+<h3>阶段1：量化粗筛（全市场，C+A）</h3>
+<p>对全A股5000+只标的，用硬条件一次性过滤：</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>条件</th><th>阈值</th><th>说明</th></tr>
+  <tr><td>营收YOY（单季）</td><td>&gt;30%</td><td>增长率下限，确保成长性</td></tr>
+  <tr><td>PE</td><td>0~100x</td><td>有利润且不太贵</td></tr>
+  <tr><td>总市值</td><td>&gt;50亿</td><td>排除流动性差的壳股</td></tr>
+  <tr><td>营业收入YOY</td><td>&lt;200%</td><td>排除低基数虚增</td></tr>
+  <tr><td>ST/*ST/退市</td><td>排除</td><td>一票否决</td></tr>
+  <tr><td>行业</td><td>排除金融/地产/公用/周期上游</td><td>银行/证券/保险/房地产/电力/煤炭/钢铁等</td></tr>
+</table>
+</div>
+
+<p>通过后剩余约200~400只候选池。</p>
+
+<h3>阶段2：指标计算（全自动）</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>指标</th><th>公式</th><th>用途</th></tr>
+  <tr><td>PEG(营收)</td><td>PE ÷ 单季营收YOY</td><td>筛选器粗筛用，最稳定</td></tr>
+  <tr><td>PEG(净利)</td><td>PE ÷ 单季净利YOY</td><td>市场常用，但对周期股有误导</td></tr>
+  <tr><td>PEG(全年)</td><td>PE ÷ 上年全年净利YOY</td><td>最滞后但最平稳</td></tr>
+  <tr><td>毛利率</td><td>销售毛利率</td><td>护城河proxy</td></tr>
+  <tr><td>市盈率</td><td>动态PE</td><td>估值状态</td></tr>
+</table>
+</div>
+
+<div class="box-red box">
+  <h4>⚠️ PEG口径警告</h4>
+  <p>三种口径差异可能10倍以上！<strong>案例：兆易创新</strong><br>
+  PEG(营收YOY 119%) = 0.91 → 合理偏低<br>
+  PEG(净利YOY 523%) = 0.21 → 低基数虚低<br>
+  PEG(全年49.5%) = 2.19 → 偏贵<br>
+  分析时必须同时给出三种口径+标注用的是哪种。</p>
+</div>
+
+<h3>阶段3：综合评分（阶段2通过者）</h3>
+
+<div class="table-wrap">
+<table>
+  <tr><th>维度</th><th>权重</th><th>评分逻辑</th></tr>
+  <tr><td>增速评分</td><td>25%</td><td>营收YOY: ≥100%=9, ≥80%=8, ≥60%=7, ≥45%=6</td></tr>
+  <tr><td>PEG评分</td><td>25%</td><td>PEG(营收): &lt;0.15=10, &lt;0.20=9, &lt;0.30=8, &lt;0.40=7</td></tr>
+  <tr><td>毛利率评分</td><td>10%</td><td>≥50%=9, ≥35%=7, ≥20%=6</td></tr>
+  <tr><td>体量评分</td><td>20%</td><td>&lt;100亿=9, &lt;200亿=8, &lt;300亿=7, &lt;500亿=6</td></tr>
+  <tr><td>行业评分</td><td>10%</td><td>优质行业8分，普通5分</td></tr>
+  <tr><td>一致性评分</td><td>10%</td><td>净利YOY与营收YOY匹配度</td></tr>
+</table>
+</div>
+
+<h3>阶段4：翻倍路径推演（三路径）</h3>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>路径A（双击）</h4>
+    <p>PE修复到行业均值 × 业绩增长50%<br>
+    公式: 1.5 × (avg_pe/pe) ≥ 1.8倍 ✅<br>
+    <em>适用：低估+业绩改善型</em></p>
+  </div>
+  <div class="card">
+    <h4>路径B（业绩驱动）</h4>
+    <p>利润翻倍驱动估值不变<br>
+    净利YOY≥100%=2分，≥50%=1分<br>
+    <em>适用：高增速成长型</em></p>
+  </div>
+  <div class="card">
+    <h4>路径C（估值修复）</h4>
+    <p>利润+50%，PE+33%<br>
+    PE&lt;行业均值×0.7=2分<br>
+    <em>适用：周期底部+赛道复苏</em></p>
+  </div>
+</div>
+
+<h3>已知局限性</h3>
+<ul>
+  <li><strong>硬阈值误伤：</strong>营收YOY<30%但利基市场深耕的标的被排除（通富微电22.8%、中科曙光23.7%）</li>
+  <li><strong>PE>100的科技龙头：</strong>海光(270x)、寒武纪(315x)、天孚(129x)被排除，但赛道逻辑独立成立</li>
+  <li><strong>体量约束：</strong>万亿市值翻倍=涨1万亿，概率极低。同等条件下小市值优先</li>
+  <li><strong>基数效应：</strong>单季YOY受去年基数极大影响，必须对比去年同期增速判断趋势</li>
+</ul>
+
+</section>
+
+<section id="thesis">
+<h2>三、持有逻辑持续检查 — Thesis Check</h2>
+
+<div class="box box-green">
+  <h4>核心原则</h4>
+  <p>所有判断基于<strong>买入时的具体逻辑支柱</strong>，不是泛泛的"公司好不好"。</p>
+</div>
+
+<h3>Step 1：恢复原始买入逻辑</h3>
+<p>记录买入时的具体支柱（3-4个），必须是可验证的：</p>
+<ul>
+  <li>❌ "华友钴业是家好公司"</li>
+  <li>✅ "刚果钴供给收缩→华友自有矿价值翻倍"</li>
+  <li>✅ "PE 17x在钴周期中是低估区间，过去5年中枢25x"</li>
+</ul>
+
+<h3>Step 2：财务数据跟踪</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>支柱类型</th><th>检查指标</th><th>数据来源</th></tr>
+  <tr><td>业绩增长</td><td>营收YOY、净利YOY</td><td>AKShare或快照缓存</td></tr>
+  <tr><td>盈利改善</td><td>毛利率趋势</td><td>同上</td></tr>
+  <tr><td>估值安全</td><td>PE变化趋势 vs 买入时</td><td>腾讯行情API</td></tr>
+  <tr><td>体量</td><td>市值变化</td><td>腾讯行情API</td></tr>
+</table>
+</div>
+
+<h3>Step 3：定性变化检查</h3>
+<ul>
+  <li>竞争格局：新进入者、客户集中度变化</li>
+  <li>监管环境：政策变化、出口禁令、关税</li>
+  <li>管理层：变动、股东行为、内部人交易</li>
+  <li>业务模型：转型、新业务线、核心业务调整</li>
+</ul>
+
+<h3>最终判定</h3>
+<div class="card-grid">
+  <div class="card">
+    <h4>✅ Intact</h4>
+    <p>所有支柱跟踪正常；定性稳定；估值未显著恶化</p>
+  </div>
+  <div class="card">
+    <h4>⬆️ Improved</h4>
+    <p>业绩超预期或逻辑更强了</p>
+  </div>
+  <div class="card">
+    <h4>⬇️ Weakening</h4>
+    <p>一个支柱偏离 + 定性/估值恶化</p>
+  </div>
+  <div class="card">
+    <h4>🚫 Broken</h4>
+    <p>两个以上支柱偏离，或关键定性面不可逆恶化</p>
+  </div>
+</div>
+
+</section>
+
+<section id="emotion">
+<h2>四、情绪决策系统</h2>
+
+<div class="box-red box">
+  <h4>⚠️ 首富的已知模式</h4>
+  <p><strong>恐慌→清仓→换仓→后悔</strong>。历史案例：3月底卖苹果(255)+减美光+换腾讯(529)。双重伤害——卖在低位买在高位。</p>
+</div>
+
+<h3>识别信号</h3>
+<ul>
+  <li><strong>恐慌：</strong>"中东战争"、"大盘暴跌"、"A股完蛋了"等外部事件驱动</li>
+  <li><strong>不甘心：</strong>"卖飞了XX"、"早知道不卖"、"苹果我已经后悔了"</li>
+  <li><strong>追热点：</strong>"光模块涨得猛"、"AI才是未来"等主题驱动，非基本面驱动</li>
+  <li><strong>连续操作：</strong>一周内做了2次以上换仓操作 = 情绪波动期</li>
+  <li><strong>"涨不跟跌照跌"综合症：</strong>持有的标的既非板块领涨，跌起来也不落人后</li>
+</ul>
+
+<h3>系统性风险三层判断</h3>
+<div class="card-grid">
+  <div class="card">
+    <h4>第一层：事件是否改变全球增长路径？</h4>
+    <p><strong>真风险：</strong>改变全球经济增长路径（台海、核升级、中美脱钩加剧）<br>
+    <strong>假风险：</strong>局部冲突、短期恐慌（3-6个月修复）</p>
+  </div>
+  <div class="card">
+    <h4>第二层："预期定价"分析</h4>
+    <p>高PE本身不危险，危险的是<strong>"高预期被打碎"</strong>。<br>
+    真正决定下跌幅度的，是<strong>预期被打破的程度</strong>，不是PE的数字。</p>
+  </div>
+  <div class="card">
+    <h4>第三层：持仓抗风险能力</h4>
+    <p>是否满仓？是否有现金弹药？是否所有持仓同涨同跌？<br>
+    满仓=没有选择权 → 焦虑的来源。</p>
+  </div>
+</div>
+
+<h3>恐慌时行为准则</h3>
+<div class="box box">
+<pre><code>恐慌时，第一个动作不是卖——是打开这个笔记看今天跌了多少。
+
+1. 如果跌了3%以内 → 不动，去睡觉
+2. 如果跌了5%以上 → 看PE：
+   PE在历史低位 → 不动
+   PE在历史高位 → 减仓1/3，不是清仓
+3. 任何时候不卖光 → 卖1/3留2/3
+4. 清仓后24小时内不许买任何新标的
+5. 减仓和换仓是两件事，分开决策
+   别因为"腾讯亏了"就去动美光</code></pre>
+</div>
+
+<h3>关键认知</h3>
+<ul>
+  <li>他的痛在<strong>"不甘心"</strong>（卖飞/追高），不在亏钱本身</li>
+  <li>已盈利400万+落袋，对亏损的容忍度理论上很高，但实际情绪受损严重</li>
+  <li><strong>"仓位"不等于"总资产"：</strong>说满仓时可能主动持仓满仓，但现金+被动持仓(阿里)仍有大量弹药</li>
+  <li><strong>"换仓"模式识别：</strong>切忌把两个标的绑在一起考虑，引导分离为两个独立决策</li>
+</ul>
+
+</section>
+
+<section id="pipeline">
+<h2>五、数据管道</h2>
+
+<div class="box-blue box">
+  <h4>统一数据管道 v2.1</h4>
+  <p>行情→腾讯行情API | 财报→AKShare | 一套代码跑到底。不依赖缓存，每天可复现。</p>
+</div>
+
+<h3>数据源架构</h3>
+
+<div class="flow">
+  <span class="flow-step">🏭 全A股 5699只</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">📡 腾讯行情API<br>5237只 (92%)</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">📊 AKShare<br>stock_yjbb_em</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">🔗 Merge</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">📈 候选池(~300只)</span>
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr><th>数据类别</th><th>来源</th><th>字段索引</th><th>备注</th></tr>
+  <tr><td>A股行情</td><td>腾讯API web.sqt.gtimg.cn</td><td>[3]价 [39]PE [44]流通市值 [45]总市值(亿)</td><td>单位是亿不是元！</td></tr>
+  <tr><td>港股行情</td><td>腾讯API hk前缀</td><td>同上</td><td>港币，×0.93=人民币</td></tr>
+  <tr><td>美股行情</td><td>腾讯API us前缀</td><td>同上</td><td>美元，×7.2=人民币</td></tr>
+  <tr><td>财报(营收YOY/净利YOY/毛利率)</td><td>AKShare stock_yjbb_em</td><td>标准字段</td><td>VPN偶发SSL拦截</td></tr>
+</table>
+</div>
+
+<h3>三个致命Bug（调试血泪史）</h3>
+
+<div class="box-red box">
+  <h4>Bug 1：批量URL格式</h4>
+  <p>❌ <code>q=sh600519/q=sz000001</code>（多个/q=拼接）→ 返回空数据<br>
+  ✅ <code>q=sh600519,sz000001</code>（逗号分隔一个/q参数）</p>
+</div>
+
+<div class="box-red box">
+  <h4>Bug 2：代码从变量名提取，不从数据体取</h4>
+  <p>批量返回 <code>v_sh603993="1~洛阳钼业~..."</code><br>
+  ❌ 错误：<code>code = parts[0]</code> → parts[0]='1'（市场代码）<br>
+  ✅ 正确：<code>re.match(r'v_(?:sh|sz)(\d{6})="', line).group(1)</code> = '603993'</p>
+</div>
+
+<div class="box-red box">
+  <h4>Bug 3：市值单位是"亿"不是"元"</h4>
+  <p>腾讯API：茅台总市值=17193.54（亿），不是1719354000000（元）<br>
+  ❌ <code>df[df['总市值'] > 50e8]</code> → 17193.54 > 50亿 = False，全被过滤<br>
+  ✅ 过滤：<code>df[df['总市值'] > 50]</code>（单位已是亿）</p>
+</div>
+
+<h3>运行方式</h3>
+<pre><code># 每日全市场扫描
+python3 ~/.hermes/scripts/doubling_screener.py
+
+# 输出
+~/Desktop/notes-investor/数据/snapshot_YYYYMMDD.csv  — 候选池（~300只）
+~/Desktop/notes-investor/数据/翻倍路径_YYYYMMDD.csv  — TOP50翻倍路径推演</code></pre>
+
+</section>
+
+<section id="portfolio">
+<h2>六、组合管理</h2>
+
+<h3>仓位集中度原则</h3>
+<ul>
+  <li>单只 &gt;40% = 极端集中，需要有充分理由</li>
+  <li>单只 &gt;25% = 高集中度，需要定期检查</li>
+  <li>主动持仓 vs 总资产要区分开来计算</li>
+</ul>
+
+<h3>年度目标利率推演</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>年化</th><th>第3年</th><th>第5年</th><th>第7年</th><th>第10年</th></tr>
+  <tr><td>10%</td><td>1331万</td><td>1611万</td><td>1949万</td><td>2594万</td></tr>
+  <tr><td><strong>15%</strong></td><td><strong>1521万</strong></td><td><strong>2011万</strong></td><td><strong>2660万</strong></td><td><strong>4046万</strong></td></tr>
+  <tr><td>20%</td><td>1728万</td><td>2488万</td><td>3583万</td><td>6192万</td></tr>
+  <tr><td>25%</td><td>1953万</td><td>3052万</td><td>4768万</td><td>9313万</td></tr>
+</table>
+<p style="margin-top:8px;font-size:0.85em;color:var(--text-dim);">以1000万为基数。核心是<b>前5年不要犯错</b>（大幅换仓/追高/恐慌卖出）。</p>
+</div>
+
+<h3>"二选一"决策框架</h3>
+<div class="box box">
+  <p><strong>核心原则：选哪个都对，关键是选了就别后悔。最差的是两头摆着都不舒服。</strong></p>
+</div>
+<ol>
+  <li><strong>拆解两边的核心矛盾：</strong>A便宜但不在风口 vs B贵但在风口——驱动力性质不同</li>
+  <li><strong>给三选一，不做代替代判断：</strong>
+    <ul>
+      <li>留A：代价是忍受踏空感，但安全垫厚</li>
+      <li>换B：代价是波动大，买在相对高点</li>
+      <li>都留一点：两边都不舒服，不推荐</li>
+    </ul>
+  </li>
+  <li><strong>时间窗口：</strong>给出明确的验证节点（如"下一个财报"），在此之前不动</li>
+  <li><strong>关键警示：</strong>不要用"追热点"作为换仓的唯一理由</li>
+</ol>
+
+<h3>全市场筛查联动</h3>
+<p>当需要确认持仓是否调整时，先跑全市场扫描：</p>
+<ul>
+  <li><strong>持仓 vs 全市场排名：</strong>当前持仓在候选池中的相对位置</li>
+  <li><strong>翻倍路径解读：</strong>每只持仓的翻倍驱动力（双击/业绩/修复）</li>
+  <li><strong>关键发现：</strong>如果没有出现一个明显更好的"一站式替代"标的，不要为了换而换</li>
+</ul>
+
+<h3>跨持仓画像</h3>
+<div class="table-wrap">
+<table>
+  <tr><th>维迪</th><th>腾讯</th><th>新易盛</th><th>华友钴业</th><th>美光</th></tr>
+  <tr><td>角色</td><td>压舱石</td><td>AI弹性仓</td><td>周期反转</td><td>美股科技</td></tr>
+  <tr><td>估值端</td><td>低估(PE 16x)</td><td>充分定价(PE 52x)</td><td>低估(PE 15x)</td><td>合理偏高(PE 36x)</td></tr>
+  <tr><td>脆弱性</td><td>极低</td><td>预期打碎风险</td><td>催化剂迟迟不来</td><td>景气下行</td></tr>
+  <tr><td>翻倍驱动力</td><td>估值修复+AI加持</td><td>业绩持续高增</td><td>PE修复+钴价反弹</td><td>HBM景气度</td></tr>
+</table>
+</div>
+
+<h3>纪律清单</h3>
+<div class="box-red box">
+<pre><code>🔴 不做什么（贴在墙上）：
+1. 恐慌时不换仓（只减仓，减不超过1/3）
+2. 清仓后24小时内不买任何新标的
+3. 一周内不做2次以上操作
+4. 不减持仓位最轻的去补仓位最重的
+5. 不减浮盈最大的去补跌得最惨的
+</code></pre>
+</div>
+
+</section>
+
+<footer>
+  <p>首富投资方法论 v1.0 · 2026年5月</p>
+  <p>A股全市场筛选 · CAN SLIM + PEG · 数据驱动 · 纪律执行</p>
+  <p style="margin-top:12px;font-size:0.8em;">这是一个个人投资操作系统，不构成投资建议</p>
+</footer>
+
+</div>
+
+</body>
+</html>
